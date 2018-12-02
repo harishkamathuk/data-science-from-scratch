@@ -8,6 +8,7 @@ Chapter 1. Introduction
 # [] = list
 # () = tuple
 # {} = dict
+# ?? = set - a dict with unique values
 
 from __future__ import division                   # integer division is lame
 
@@ -46,12 +47,30 @@ def number_of_friends(user):
     """how many friends does _user_ have?"""    
     return len(user["friends"]) # length of friend_ids list
 
+connections = [number_of_friends(user) for user in users]
+print("Connections (v1):", connections)
+
+connections = [(user["id"], number_of_friends(user))
+                for user in users]
+print("Connections (v2):", connections)
+
 total_connections = sum(number_of_friends(user)                        
                                  for user in users) # 24
-
 print("Total connections: ", total_connections)
 
 
 num_users = len(users)                            # length of the users list
 avg_connections = total_connections / num_users   # 2.4
+
+# create a list (user_id, number_of_friends)
+num_friends_by_id = [(user["id"], number_of_friends(user))
+                     for user in users]
+
+print(num_friends_by_id)
+
+# sorted(num_friends_by_id,                                  # get it sorted
+#       key = lambda (user_id, num_friends): num_friends,   # by num_friends
+#       reverse=True)                                       # largest to smallest
+
+
 
