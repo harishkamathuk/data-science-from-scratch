@@ -8,7 +8,7 @@ Chapter 1. Introduction
 # [] = list - mutable
 # () = tuple - immutable
 # {} = dict - hashes (key - value pairs)
-# ?? = set - a dict with unique values
+# {} = set - a list with unique values - use key set() or  
 
 from __future__ import division                   # integer division is lame
 from collections import Counter
